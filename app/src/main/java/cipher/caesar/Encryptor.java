@@ -9,14 +9,29 @@ public class Encryptor {
         this.key = 26 + key % 26;
     }
 
+    public int getKey() {
+        return this.key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public String getPlainText() {
+        return this.plainText;
+    }
+
+    public void setPlainText(String plainText) {
+        this.plainText = plainText;
+    }
+
     public String encode() {
-        char[] plainTextCharArray = plainText.toCharArray();
-        char[] cipherTextCharArray = new char[plainTextCharArray.length];
-        for (int index = 0; index < plainTextCharArray.length; index++) {
-            char letter = plainTextCharArray[index];
+        char[] charArray = plainText.toCharArray();
+        for (int index = 0; index < charArray.length; index++) {
+            char letter = charArray[index];
             char cipherLetter = letter > 'Z' || letter < 'A' ? letter : (char) ((letter - 'A' + key) % 26 + 'A');
-            cipherTextCharArray[index] = cipherLetter;
+            charArray[index] = cipherLetter;
         }
-        return String.copyValueOf(cipherTextCharArray);
+        return String.valueOf(charArray);
     }
 }
