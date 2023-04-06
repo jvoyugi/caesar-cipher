@@ -6,11 +6,12 @@ public class Decryptor {
     private String plainText;
 
     public Decryptor(short key, String plainText) {
-        this.plainText = plainText;
+        this.plainText = plainText.toUpperCase();
         this.key = key;
     }
 
     public String decode(){
+        
         return "";
     }
 }

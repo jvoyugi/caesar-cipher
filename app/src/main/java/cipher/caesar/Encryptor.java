@@ -5,11 +5,18 @@ public class Encryptor {
     private String plainText;
 
     public Encryptor(int key, String plainText) {
-        this.plainText = plainText;
+        this.plainText = plainText.toUpperCase();
         this.key = key;
     }
 
-    public String encode(){
-        return "";
+    public String encode() {
+        char[] plainTextCharArray = plainText.toCharArray();
+        char[] cipherTextCharArray = new char[plainTextCharArray.length];
+        for (int index = 0; index < plainTextCharArray.length; index++) {
+            char letter = plainTextCharArray[index];
+            char cipherLetter = letter > 'Z' || letter < 'A' ? letter : (char) ((letter - 'A' + key) % 26 + 'A');
+            cipherTextCharArray[index] = cipherLetter;
+        }
+        return String.copyValueOf(cipherTextCharArray);
     }
 }
