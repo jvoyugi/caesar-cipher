@@ -32,8 +32,17 @@ public class EncryptorTest {
     @Test
     public void encryptorEncode_withLargeKey_and_mustAlwaysBeInCapital(){
        String plainText = "tHE QUICK BRoWN FOX JUMPs OVER THe LaZY DOG";
-       String cipherText = "NBY KOCWE VLIQH ZIR DOGJM IPYL NBY FUTS XIA";
+       String cipherText = "VJG SWKEM DTQYP HQZ LWORU QXGT VJG NCBA FQI";
        int key = 50000;
+       Encryptor encryptor = new Encryptor(key, plainText);
+       assertEquals(encryptor.encode(), cipherText);
+    }
+
+    @Test
+    public void encryptorEncode_withLargeNegativeKey_and_mustAlwaysBeInCapital(){
+       String plainText = "tHE QUICK BRoWN FOX JUMPs OVER THe LaZY DOG";
+       String cipherText = "NBY KOCWE VLIQH ZIR DOGJM IPYL NBY FUTS XIA";
+       int key = -20000;
        Encryptor encryptor = new Encryptor(key, plainText);
        assertEquals(encryptor.encode(), cipherText);
     }
