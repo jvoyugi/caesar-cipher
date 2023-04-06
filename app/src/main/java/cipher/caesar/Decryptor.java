@@ -7,7 +7,8 @@ public class Decryptor {
 
     public Decryptor(int key, String cipherText) {
         this.cipherText = cipherText.toUpperCase();
-        this.key = key-26;
+        this.key = key%26;
+        
     }
 
     public String decode() {
@@ -16,7 +17,8 @@ public class Decryptor {
         for (int index = 0; index < cipherTextCharArray.length; index++) {
             char cipherLetter = cipherTextCharArray[index];
             char letter = cipherLetter > 'Z' || cipherLetter < 'A' ? cipherLetter
-                    : (char) ((cipherLetter - 'A' - key) % 26 + 'A');
+                    : (char) ((cipherLetter - 'A' + 26 - key) % 26 + 'A');
+            System.out.println(letter + " " + (int) letter + " " + (int) cipherLetter + " " + cipherLetter);
             plainTextCharArray[index] = letter;
         }
         return String.copyValueOf(plainTextCharArray);
