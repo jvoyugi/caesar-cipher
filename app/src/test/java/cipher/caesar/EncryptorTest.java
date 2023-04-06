@@ -28,4 +28,6 @@ public class EncryptorTest {
        Encryptor encryptor = new Encryptor(key, plainText);
        assertEquals(encryptor.encode(), cipherText);
     }
+
+    
 }
