@@ -6,7 +6,7 @@ public class Encryptor {
 
     public Encryptor(int key, String plainText) {
         this.plainText = plainText.toUpperCase();
-        this.key = key >= 0 ? key : 26 + key;
+        this.key = key >= 0 ? key : 26 + key % 26;
     }
 
     public String encode() {
