@@ -41,10 +41,10 @@ public class DecryptorTest {
 
     @Test
    public void decryptorEncode_withLargeNegativeKey_and_mustAlwaysBeInCapital() {
-      String plainText = "tHE QUICK BRoWN FOX JUMPs OVER THe LaZY DOG";
-      String cipherText = "NBY KOCWE VLIQH ZIR DOGJM IPYL NBY FUTS XIA";
+      String plainText = "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG";
+      String cipherText = "NBy KOcWE VLIQH ZIr DOGJM IPYL NBY FUTS XIa";
       int key = -20000;
-      Encryptor encryptor = new Encryptor(key, cipherText);
-      assertEquals(encryptor.encode(), plainText);
+      Decryptor decryptor = new Decryptor(key, cipherText);
+      assertEquals(decryptor.decode(), plainText);
    }
 }
