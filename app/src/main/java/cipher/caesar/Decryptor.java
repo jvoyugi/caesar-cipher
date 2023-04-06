@@ -7,7 +7,7 @@ public class Decryptor {
 
     public Decryptor(int key, String cipherText) {
         this.cipherText = cipherText.toUpperCase();
-        this.key = key%26;
+        this.key = key % 26;
 
     }
 

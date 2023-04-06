@@ -47,4 +47,12 @@ public class DecryptorTest {
       Decryptor decryptor = new Decryptor(key, cipherText);
       assertEquals(decryptor.decode(), plainText);
    }
+   @Test
+   public void decryptorEncode_withMidNegativeKey_and_mustAlwaysBeInCapital() {
+      String plainText = "tHE QUICK BRoWN FOX JUMPs OVER THe LaZY DOG";
+      String cipherText = "XLI UYMGO FVSAR JSB NYQTW SZIV XLI PEDC HSK";
+      int key = -22;
+      Encryptor encryptor = new Encryptor(key, plainText);
+      assertEquals(encryptor.encode(), cipherText);
+   }
 }
