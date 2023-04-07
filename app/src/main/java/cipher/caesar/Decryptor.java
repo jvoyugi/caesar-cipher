@@ -8,19 +8,34 @@ public class Decryptor {
     public Decryptor(int key, String cipherText) {
         this.cipherText = cipherText.toUpperCase();
         this.key = key % 26;
+    }
 
+
+    public int getKey() {
+        return this.key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public String getCipherText() {
+        return this.cipherText;
+    }
+
+    public void setCipherText(String cipherText) {
+        this.cipherText = cipherText;
     }
 
     public String decode() {
-        char[] cipherTextCharArray = cipherText.toCharArray();
-        char[] plainTextCharArray = new char[cipherTextCharArray.length];
-        System.out.println(this.cipherText);
-        for (int index = 0; index < cipherTextCharArray.length; index++) {
-            char cipherLetter = cipherTextCharArray[index];
+        char[] charArray = cipherText.toCharArray();
+        for (int index = 0; index < charArray.length; index++) {
+            char cipherLetter = charArray[index];
+            // Subtract 26 to allow for 'wrap around' between A to Z
             char letter = cipherLetter > 'Z' || cipherLetter < 'A' ? cipherLetter
                     : (char) ((cipherLetter - 'A' + 26 - key) % 26 + 'A');
-            plainTextCharArray[index] = letter;
+            charArray[index] = letter;
         }
-        return String.copyValueOf(plainTextCharArray);
+        return String.valueOf(charArray);
     }
 }
