@@ -31,6 +31,7 @@ public class Decryptor {
         char[] charArray = cipherText.toCharArray();
         for (int index = 0; index < charArray.length; index++) {
             char cipherLetter = charArray[index];
+            // Subtract 26 to allow for 'wrap around' between A to Z
             char letter = cipherLetter > 'Z' || cipherLetter < 'A' ? cipherLetter
                     : (char) ((cipherLetter - 'A' + 26 - key) % 26 + 'A');
             charArray[index] = letter;
